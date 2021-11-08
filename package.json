@@ -1,0 +1,26 @@
+{
+  "name": "Intelli_Homes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intelli-homes/Intelli_Homes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/intelli-homes/Intelli_Homes/issues"
+  },
+  "homepage": "https://github.com/intelli-homes/Intelli_Homes#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "handlebars": "^4.7.7",
+    "sqlite": "^4.0.23",
+    "sqlite3": "^5.0.2"
+  }
+}
