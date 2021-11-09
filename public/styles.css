@@ -29,3 +29,13 @@
     height: auto;
 }
 
+.page-footer{
+    background-color: var(--primary);
+}
+
+.list-unstyled > li > a{
+    text-decoration: none;
+    color: var(--six);
+    margin: 2px;
+}
+
