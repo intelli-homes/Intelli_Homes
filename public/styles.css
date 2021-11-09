@@ -1,0 +1,31 @@
+:root{
+    --base: #C2E3FB;
+    --primary: #71D169;
+    --secondary: #D1CD69;
+    --fouth: #C4C4C4;
+    --fith: #C62961;
+    --six: #000000;
+}
+
+.navbar{
+    background-color: var(--primary);
+}
+
+.navbar-nav > li > a{
+    color: var(--six);
+}
+
+.navbar-nav > li > a:hover{
+    color: var(--fith);
+}
+
+.nav-item, .navbar > a{
+    margin: 3px;
+    padding: 3px;
+}
+
+.logo{
+    width: 7.5%;
+    height: auto;
+}
+

@@ -8,6 +8,7 @@ const PORT =  process.env.PORT || 3017;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+
 // enable the static folder...
 app.use(express.static('public'));
 
@@ -19,6 +20,18 @@ app.set('view engine', 'handlebars');
 
 app.get('/', function (req, res) {
     res.render('home')
+})
+app.get('/cameras', function (req, res) {
+    res.render('cameras')
+})
+app.get('/reports', function (req, res) {
+    res.render('reports')
+})
+app.get('/updates', function (req, res) {
+    res.render('updates')
+})
+app.get('/notifications', function (req, res) {
+    res.render('notifications')
 })
 
 app.listen(PORT, function () {
