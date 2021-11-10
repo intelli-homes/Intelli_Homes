@@ -170,3 +170,33 @@ body{
     color: var(--fith);
 
 }
+
+.post_input{
+    width: 100%;
+    text-align: center;
+    display: block;
+    background-color: var(--fith);
+    color: var(--primary);
+    margin: 3px;
+    padding: 8px;
+}
+
+.middle{
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    background-color: var(--base);
+}
+
+
+.txtpost{
+    border-radius: 4px;
+    margin: 5px;
+    text-align: center;
+}
+
+.middleb{
+    border-radius: 4px;
+    margin: 5px;
+    text-align: right;
+}
