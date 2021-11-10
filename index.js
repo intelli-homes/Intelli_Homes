@@ -22,6 +22,7 @@ app.get('/', function (req, res) {
     res.render('home')
 })
 app.get('/cameras', function (req, res) {
+    req.params.home
     res.render('cameras')
 })
 app.get('/reports', function (req, res) {

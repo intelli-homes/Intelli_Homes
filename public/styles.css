@@ -1,10 +1,10 @@
 :root{
-    --base: #C2E3FB;
-    --primary: #71D169;
-    --secondary: #D1CD69;
-    --fouth: #C4C4C4;
-    --fith: #C62961;
-    --six: #000000;
+    --base: #32936f;
+    --primary: #2274a5;
+    --secondary: #ffffff;
+    --fouth: #e83f6f;
+    --fith: #ffbf00;
+
 }
 
 .navbar{
@@ -12,7 +12,7 @@
 }
 
 .navbar-nav > li > a{
-    color: var(--six);
+    color: var(--secondary);
 }
 
 .navbar-nav > li > a:hover{
@@ -33,9 +33,18 @@
     background-color: var(--primary);
 }
 
-.list-unstyled > li > a{
+.navbar-nav > li > a{
     text-decoration: none;
-    color: var(--six);
+    color: var(--secondary);
     margin: 2px;
+}
+
+.toggle{
+    background-color: var(--secondary);
+    color: var(--fith);
+}
+
+.footer-copyright{
+    background-color: var(--fouth);
 }
 
