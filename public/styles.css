@@ -201,3 +201,25 @@ body{
     margin: 5px;
     text-align: right;
 }
+
+.calender{
+    font-size: medium;
+    font-weight: normal;
+    
+}
+
+.mdl_date, .mdl_weather{
+    margin: 5px;
+    padding: 5px;
+    font-size: medium;
+    background-color: var(--secondary);
+    color: var(--fouth);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.home_name{
+    background-color: var(--fith);
+    color: var(--base);
+    padding: 5px;
+}
+
