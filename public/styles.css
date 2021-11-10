@@ -38,6 +38,11 @@
     color: var(--secondary);
     margin: 2px;
 }
+.list-unstyled > li > a{
+    text-decoration: none;
+    color: var(--secondary);
+    margin: 2px;
+}
 
 .toggle{
     background-color: var(--secondary);
@@ -48,3 +53,10 @@
     background-color: var(--fouth);
 }
 
+.text-uppercase{
+    color: var(--fith);
+}
+
+.slogan{
+    color: var(--secondary);
+}
