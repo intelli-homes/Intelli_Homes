@@ -92,12 +92,16 @@ body{
     margin: 5px;
     padding: 5px;
 
+    justify-content: center;
+
 }
 
 .homediv{
     background-color: var(--base);
     margin: 5px;
     padding: 5px;
+    text-align: center;
+    justify-content: center;
 }
 
 .homediv2{
