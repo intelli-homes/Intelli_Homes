@@ -80,6 +80,13 @@ body{
     text-align: center;
 }
 
+.right{
+    
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    background-color: var(--base);
+}
 .home{
     margin: 5px;
     padding: 5px; 
@@ -102,9 +109,64 @@ body{
     padding: 5px;
     text-align: center;
     justify-content: center;
+    border-bottom: 3px var(--secondary) solid;
 }
 
 .homediv2{
+    background-color: var(--fouth);
+    margin: 5px;
+    padding: 5px;
     text-align: center;
     justify-content: center;
+}
+
+.homedivr{
+    background-color: var(--fith);
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    justify-content: center;
+}
+
+.left_date{
+    text-align: right;
+    width: 50%;
+    background-color: var(--secondary);
+    justify-content: right;
+    float: right;
+}
+
+.left_tittle{
+    background-color: var(--fith);
+    padding: 3px;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.left_p{
+    color: var(--secondary);
+    font-size: small;
+    padding: 4px;
+    border: 1px var(--fith) inset;
+    border-radius: 4px;
+
+}
+
+.left_span{
+    
+    background-color: var(--fouth);
+    margin: 2px;
+    color: var(--secondary);
+    display: block;
+    padding: 3px;
+}
+
+.left_span > a> i{
+    color: var(--secondary);
+
+}
+
+.left_span > a> i:hover{
+    color: var(--fith);
+
 }

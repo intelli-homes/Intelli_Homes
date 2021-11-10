@@ -24,5 +24,8 @@
     "handlebars": "^4.7.7",
     "sqlite": "^4.0.23",
     "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
