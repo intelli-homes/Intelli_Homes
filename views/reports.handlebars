@@ -97,36 +97,3 @@
 </div>
 
 
-<script>
-  
-  //google chart
-  function drawChart() {
-    const data = google.visualization.arrayToDataTable ([
-      ['House Breaking Areas', 'Year 2021 Number',],
-      ['Tembisa', 60],
-      ['Kempton Park', 43],
-      ['Daveyton', 50,
-      ['Benoni', 37],
-      ['Rhodesfield', 22]
-    ]);
-    
-    const options = {
-      title: 'Number of house robbery committed:',
-      chartArea: {width: '50%'},
-      hAxis: {
-        title: 'Total Number',
-        minValue: 0
-      };
-      vAxis: {
-        title: 'Towns'
-      };
-   };
-   
-   const chart = new google.visualization..BarChart(container);
-   chart.draw(data, options);
- }
- 
- 
-      
-    
-</script>
