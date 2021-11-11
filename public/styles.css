@@ -258,6 +258,8 @@ body{
     display: block;
     border-radius: 4px;
     margin: 6px;
+    padding: 6px;
+    background-color: var(--fouth);
 }
 .post_cont_wrap{
     /* background-color: var(--fouth); */
