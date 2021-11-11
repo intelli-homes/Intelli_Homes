@@ -313,8 +313,14 @@ body{
     margin: 5px;
     padding: 4px;
     text-align: center;
-    justify-content: center;
-    display: block;
+    
+    
+}
+
+.camera_block{
+    text-align: center;
+    
+
 }
 
 .pic{
