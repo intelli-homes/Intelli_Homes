@@ -272,7 +272,25 @@ body{
     background-color: var(--secondary);
 }
 
-.post_img{
+.post_img, .cam{
     width: 100%;
     height: auto;
+}
+
+.camera{
+    background-color: var(--base);
+    margin: 5px;
+    padding: 4px;
+}
+
+.pic{
+    padding: 5px;
+
+
+}
+
+.cam_name{
+    padding: 2px;
+    color: var(--secondary);
+    background-color: var(--fouth;
 }
