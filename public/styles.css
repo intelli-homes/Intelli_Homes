@@ -128,6 +128,7 @@ body{
     text-align: center;
     justify-content: center;
     color: var(--base);
+    border-radius: 2px;
 }
 
 .left_date{
@@ -136,6 +137,7 @@ body{
     background-color: var(--secondary);
     justify-content: right;
     float: right;
+    border-radius: 2px;
 }
 
 .left_tittle{
@@ -144,6 +146,7 @@ body{
     font-size: medium;
     font-weight: bold;
     clear: both;
+    border-radius: 2px;
 }
 
 .left_p{
@@ -225,9 +228,12 @@ body{
     
 }
 
+
 .mdl_date, .mdl_weather{
+    border-radius: 2px;
     margin: 5px;
     padding: 5px;
+    border-radius: 2px;
     font-size: medium;
     background-color: var(--secondary);
     color: var(--fouth);
@@ -238,6 +244,7 @@ body{
     background-color: var(--fith);
     color: var(--base);
     padding: 5px;
+    border-radius: 2px;
 }
 
 .post_name{
@@ -252,6 +259,9 @@ body{
 
 .post_date{
     float: right;
+    background-color: var(--secondary);
+    padding: 3px;
+    
 }
 
 .post{
@@ -270,6 +280,13 @@ body{
 .post_tittle{
     /* background-color: var(--fith); */
     clear: both;
+    background-color: var(--fith);
+    color: var(--fouth);
+    padding: 5px;
+    font-weight: normal;
+    font-size: large;
+
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .post_meta_wrap{
@@ -286,18 +303,29 @@ body{
     background-color: var(--base);
     margin: 5px;
     padding: 4px;
+    text-align: center;
+    justify-content: center;
+    display: block;
 }
 
 .pic{
-    padding: 5px;
+    padding: 8px;
+    
+    
+    background-color: var(--primary);
 
 
 }
+.cam{
+    border-radius: 9px;
+}
+
 
 .cam_name{
     padding: 2px;
     color: var(--secondary);
     background-color: var(--fith);
+    border-radius: 2px;
 }
 
 .card {
