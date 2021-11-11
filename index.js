@@ -21,10 +21,16 @@ app.set('view engine', 'handlebars');
 app.get('/', function (req, res) {
     res.render('home')
 })
+
 app.get('/cameras', function (req, res) {
-    req.params.home
+  
     res.render('cameras')
 })
+
+app.get('/camera', function (req, res) {
+    res.render('camera')
+})
+
 app.get('/reports', function (req, res) {
     res.render('reports')
 })
@@ -34,6 +40,8 @@ app.get('/updates', function (req, res) {
 app.get('/notifications', function (req, res) {
     res.render('notifications')
 })
+
+
 
 app.listen(PORT, function () {
     console.log('app running at port 3017')

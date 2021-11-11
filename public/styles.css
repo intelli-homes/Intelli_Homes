@@ -341,6 +341,18 @@ body{
     color: var(--secondary);
     background-color: var(--fith);
     border-radius: 2px;
+    text-decoration: none;
+
+}
+
+.cam_name:hover{
+    text-decoration: none;
+    background-color: var(--fouth);
+
+}
+.pic1{
+    padding: 8px;
+    margin: 4px;
 }
 
 .card {
