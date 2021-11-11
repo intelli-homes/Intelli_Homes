@@ -1,3 +1,98 @@
 <div class="container">
     reports
 </div>
+<div class="col-md-0">
+                <div class="row">
+
+                    <!--No of written exams card-->
+                    <div class="col-md-3 col-md-4">
+                        <div class="card l-bg-cherry">
+                            <div class="card-statistic-3 p-4">
+                                <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
+                                <div class="mb-4">
+                                    <h5 class="card-title mb-0">Number of written exams</h5>
+                                </div>
+                                <div class="row align-items-center mb-2 d-flex">
+                                    <div class="col-8">
+                                        <h2 class="d-flex align-items-center mb-0">
+                                        <?php
+                                        //retrieve data from database [Number of written exams]
+                                                $conn = mysqli_connect('localhost', 'root', 'Maphaha@98', "unisa system");
+
+                                                $sql = "SELECT * FROM exams";
+                                                $query = mysqli_query($conn, $sql);
+                                                $total_exams = mysqli_num_rows($query);
+
+                                                echo "$total_exams"; 
+                                            ?>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--No of written exams card-->
+                    <div class="col-md-3 col-md-4">
+                        <div class="card l-bg-blue-dark">
+                            <div class="card-statistic-3 p-4">
+                                <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
+                                <div class="mb-4">
+                                    <h5 class="card-title mb-0">Files Uploaded</h5>
+                                </div>
+                                <div class="row align-items-center mb-2 d-flex">
+                                    <div class="col-8">
+                                        <h2 class="d-flex align-items-center mb-0">
+                                        <?php
+                                            //retrieve data from database [Number of written exams]
+                                            $conn = mysqli_connect('localhost', 'root', 'Maphaha@98', 'unisa system');
+
+                                            $sql = "SELECT `file_uploaded` FROM `file_upload` WHERE 1";
+                                            $result = mysqli_query($conn, $sql);
+                                            while($data = mysqli_fetch_row($result))
+                                            {
+                                                $files = $data[0];
+                                            }
+                                            echo "$files";
+                                        ?>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--No of written exams card-->
+                    <div class="col-md-3 col-md-4">
+                            <div class="card l-bg-orange-dark">
+                                <div class="card-statistic-3 p-4">
+                                    <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
+                                    <div class="mb-4">
+                                        <h5 class="card-title mb-0">Files Not Uploaded</h5>
+                                    </div>
+                                    <div class="row align-items-center mb-2 d-flex">
+                                        <div class="col-8">
+                                            <h2 class="d-flex align-items-center mb-0">
+                                            <?php
+                                                //retrieve data from database [Number of written exams]
+                                                $conn = mysqli_connect('localhost', 'root', 'Maphaha@98', 'unisa system');
+
+                                                $sql = "SELECT `count` FROM `not_uploaded` WHERE 1";
+                                                $result = mysqli_query($conn, $sql);
+                                                while($data = mysqli_fetch_row($result))
+                                                {
+                                                    $files = $data[0];
+                                                }
+                                                echo "$files";
+                                            ?>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        
+                </div>
+            </div>
