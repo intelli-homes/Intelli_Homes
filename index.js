@@ -1,9 +1,6 @@
 const express = require('express');
 const exphbs  = require('express-handlebars');
 
-//google charts
-const GoogleChartsNode = require('google-charts-node');
-
 const app = express();
 const PORT =  process.env.PORT || 3017;
 
