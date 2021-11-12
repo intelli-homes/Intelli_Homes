@@ -18,6 +18,8 @@ body{
     color: var(--secondary);
     font-weight: lighter;
     border: 1px var(--secondary) outset;
+    padding: 4px;
+    background-color: var(--primary);
     
 }
 
