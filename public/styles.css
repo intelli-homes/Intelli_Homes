@@ -56,6 +56,12 @@ body{
     margin: 2px;
 }
 
+.list-unstyled > li > a:hover{
+    
+    color: var(--fith);
+    
+}
+
 .toggle{
     background-color: var(--secondary);
     color: var(--fith);
@@ -363,6 +369,10 @@ body{
 .updates1{
    width: 50%;
 }
+.copyname{
+    color: var(--secondary);
+    text-decoration: none;
+}
 .card {
     background-color: #fff;
     border-radius: 10px;
@@ -406,6 +416,14 @@ body{
     opacity: 0.1;
 }
 
+.nav_t{
+    color: var(--fouth);
+    font-weight: bold;
+    font-size: large;
+    background-color: var(--fith);
+    padding: 3px;
+    
+}
 .l-bg-cyan {
     background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
     color: #fff;
