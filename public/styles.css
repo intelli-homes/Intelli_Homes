@@ -373,6 +373,11 @@ body{
     color: var(--secondary);
     text-decoration: none;
 }
+
+.nav-link{
+    font-size: large;
+    font-weight: bold;
+}
 .card {
     background-color: #fff;
     border-radius: 10px;
