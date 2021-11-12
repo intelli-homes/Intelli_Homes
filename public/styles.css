@@ -378,6 +378,10 @@ body{
     font-size: large;
     font-weight: bold;
 }
+
+.tog{
+    background-color: var(--fith);
+}
 .card {
     background-color: #fff;
     border-radius: 10px;
