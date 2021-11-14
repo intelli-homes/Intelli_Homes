@@ -1,21 +1,17 @@
-<div class="login">
-    <div class="container">
-		<div class="row main-content text-center">
-			<div class="col-md-4 text-center company__info">
-				<span class="company__logo"><img class="logo2 img-fluid img-thumbnail" src="logo.png" alt=""></span>
-				<h4 class="company_title">INTELLI HOMES</h4>
-			</div>
-			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
-				<div class="container-fluid">
-					
-					<div class="row">
-                        
-						<form control="" class="form-group" method="post" action="/login">
-                            <div class="row login_text">
+
+
+
+
+    <div class="card shadow-2-strong card-registration regwrap container" style="border-radius: 15px;">
+        <div class="card-body p-4 p-md-5 ">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 register_p">login to your account</h3>
+            <form method="post" action="/register" class="card-body1">
+
+               <div class="row login_text">
 						<h2 class="">Log In</h2>
 					</div>
                             <div class="row">
-                                <select id="inputState" class="form-control" name="userType">
+                                <select id="inputState" class=" form__input" name="userType">
                                     <option selected>User</option>
                                     <option>Admin</option>
                                 </select>
@@ -31,12 +27,16 @@
 								<input type="submit" value="Submit" class="btn form__input">
 							</div>
                             
-						</form>
-					</div>
 
-				</div>
-			</div>
-		</div>
-	</div>
+                
 
-</div>
+            </form>
+           <small class="row register_phrase">
+								<p>Don't have an account? <span><a href="/register">Register</a></span></p>
+							</small>
+        </div>
+    </div>
+  
+
+
+

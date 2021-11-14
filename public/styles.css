@@ -459,7 +459,7 @@ form{
 	padding: 2em 2em;
 }
 .form__input{
-	width: 80%;
+	width: 50%;
 	border:0px solid transparent;
 	border-radius: 0;
 	border-bottom: 1px solid var(--fith);
@@ -495,8 +495,63 @@ form{
 
 
 /*login*/
+
+/*register*/
+.gradient-custom {
+    /* fallback for old browsers */
+    background: var(--base);
+    padding: 10px;
+    margin: 3px;
+    width: 50%;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+   
+  }
+.card-body1{
+    background-color: var(--fith);
+    padding: 2em;
+}
+.form-outline{
+    background-color: var(--fouth);
+    padding: 1em;
+}
+  
+  .card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+
+  }
+  .register_p {
+    color: var(--secondary);
+  }
+
+
+/*register*/
+.register_phrase{
+    padding: 10px;
+    color: var(--secondary);
+}
+.login_phrase{
+    padding: 10px;
+    color: var(--fith);
+}
+
+.register_phrase > p > span > a{
+    
+    color: var(--fith);
+    text-decoration: none;
+}
+
+.login_phrase > p > span > a{
+    
+    color: var(--fith);
+    text-decoration: none;
+}
+
 .card {
-    background-color: #fff;
+    background-color: var(--primary);
     border-radius: 10px;
     border: none;
     position: relative;
