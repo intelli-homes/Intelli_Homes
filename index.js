@@ -121,6 +121,12 @@ app.post('/register', function (req, res) {
 
 })
 
+app.get('/admin', function (req, res) {
+    res.render('admin/index')
+
+
+})
+
 
 
 app.listen(PORT, function () {

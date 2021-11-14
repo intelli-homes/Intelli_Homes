@@ -550,6 +550,40 @@ form{
     text-decoration: none;
 }
 
+.admin_home > div{
+    justify-content: center;
+    align-content: center;
+    padding: 4px;
+    margin: 1px;
+    color: var(--fith);
+    border-radius: 3px;
+    border: 2px var(--fouth);
+    background-color: var(--primary);
+}
+.admin_home > div > a > h5{
+    text-decoration: none;
+    justify-content: center;
+    align-content: center;
+    padding: 4px;
+    margin: 1px;
+    color: var(--fith);
+    border-radius: 3px;
+    border: 2px var(--fouth);
+    background-color: var(--primary);
+}
+.admin_home > div > a:hover{
+    text-decoration: none;
+
+}
+
+.admin_home > div > a > h5:hover{
+    color: var(--secondary);
+
+}
+
+.admin_home{
+    padding: 2px;
+}
 .card {
     background-color: var(--primary);
     border-radius: 10px;
