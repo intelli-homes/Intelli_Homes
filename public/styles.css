@@ -8,6 +8,7 @@
 }
 body{
     background-color: var(--secondary);
+    
 }
 
 .navbar{
@@ -38,6 +39,10 @@ body{
 
 .logo{
     width: 7.5%;
+    height: auto;
+}
+.logo2{
+    width: 50%;
     height: auto;
 }
 
@@ -382,6 +387,114 @@ body{
 .tog{
     background-color: var(--fith);
 }
+
+/* login*/
+.login{
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    background-color: var(--base);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    
+
+    justify-content: center;
+
+}
+.main-content{
+	width: 50%;
+	border-radius: 20px;
+	box-shadow: 0 5px 5px var(--fith);
+	margin: 5em auto;
+	display: flex;
+}
+.company__info{
+	background-color: var(--fouth);
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: var(--secondary);
+}
+.fa-android{
+	font-size:3em;
+}
+@media screen and (max-width: 640px) {
+	.main-content{width: 90%;}
+	.company__info{
+		display: none;
+	}
+	.login_form{
+		border-top-left-radius:20px;
+		border-bottom-left-radius:20px;
+	}
+}
+@media screen and (min-width: 642px) and (max-width:800px){
+	.main-content{width: 70%;}
+}
+.login_text{
+    font-size: medium;
+    font-weight: bold;
+	color:var(--fith);
+    padding: 5px;
+    margin-top: 2px;
+}
+.login_text >h2{
+    font-size: medium;
+    font-weight: bolder;
+  
+	
+}
+.login_form{
+	background-color: var(--primary);
+	border-top-right-radius:20px;
+	border-bottom-right-radius:20px;
+	border-top:1px solid var(--secondary);
+	border-right:1px solid var(--primary);
+}
+form{
+	padding: 2em 2em;
+}
+.form__input{
+	width: 80%;
+	border:0px solid transparent;
+	border-radius: 0;
+	border-bottom: 1px solid var(--fith);
+	padding: 1em .5em .5em;
+	padding-left: 2em;
+	outline:none;
+	margin:1.5em auto;
+	transition: all .5s ease;
+}
+.form__input:focus{
+	border-bottom-color: var(--primary);
+	box-shadow: 0 0 5px var(--fith); 
+	border-radius: 4px;
+}
+.btn{
+	transition: all .5s ease;
+	width: 40%;
+	border-radius: 30px;
+	color:var(--secondary);
+	font-weight: 600;
+	background-color: var(--base);
+	border: 1px solid var(--primary);
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+    padding-left: 2em;
+    padding: 1em .5em .5em;
+    text-align: center;
+}
+.btn:hover, .btn:focus{
+	background-color: var(--fith);
+	color:var(--primary);
+}
+
+
+/*login*/
 .card {
     background-color: #fff;
     border-radius: 10px;
