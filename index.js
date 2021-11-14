@@ -84,7 +84,6 @@ app.post('/login', function (req, res) {
     const userType = req.body.userType
     const username = req.body.username
     const password = req.body.password
-    
 
     if (req.body.userType && req.body.username && req.body.password) {
         req.session.userType = userType
