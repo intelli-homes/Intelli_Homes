@@ -7,7 +7,7 @@ module.exports = function admin() {
     function showuser() {
         user = 'show'
         post = 'hidden'
-        user = 'hidden'
+        update = 'hidden'
     }
 
     function returnuser() {
@@ -16,7 +16,7 @@ module.exports = function admin() {
     function showpost() {
         user = 'hidden'
         post = 'show'
-        user = 'hidden'
+        update = 'hidden'
     }
 
     function returnpost() {
