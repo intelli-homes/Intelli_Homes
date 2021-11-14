@@ -1,6 +1,10 @@
 const express = require('express');
 const exphbs  = require('express-handlebars');
-const session = require('express-session')
+const session = require('express-session');
+const Admin = require('./admin');
+
+
+const admin = Admin();
 const app = express();
 const PORT =  process.env.PORT || 3017;
 
@@ -122,7 +126,37 @@ app.post('/register', function (req, res) {
 })
 
 app.get('/admin', function (req, res) {
-    res.render('admin/index')
+    
+    users_control = admin.returnuser()
+    posts_control = admin.returnupdate()
+    updates_control = admin.returnpost()
+    console.log(users_control)
+    res.render('admin/index', {
+        users_control: users_control,
+        posts_control: posts_control,
+        updates_control: updates_control
+    })
+
+   
+})
+
+app.post('/admin', function (req, res) {
+    btn = req.body.btn_admin
+    // console.log(btn)
+    if (btn === 'Posts') {
+        admin.showuser()
+        console.log(btn)
+    }
+    if (btn === 'Updates') {
+        admin.showupdate()
+        console.log(btn)
+    }
+    if (btn === 'Users') {
+        admin.showpost()
+        console.log(btn)
+    }
+
+    res.redirect('admin')
 
 
 })

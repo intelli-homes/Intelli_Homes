@@ -1,20 +1,165 @@
-<div class="container">
-    <div class=" admin_home row">
-        <h4>DASHBOARD</h4>
+<div class="container-fluid admin_fluid">
+    <h4 class="admin_dashboard">DASHBOARD</h4>
+    <div class="container admin_wrap">
+    <form action="/admin" method="post">
+        <div class="admin_home row">
+        
         <div class="col-md">
             <a href="">
-                <h5>Users</h5>
+                <h5><input type="submit" name="btn_admin" value="Users"></h5>
             </a>
         </div>
         <div class="col-md-4">
             <a href="">
-                <h5>Posts</h5>
+                <h5><input type="submit" name="btn_admin" value="Posts"></h5>
             </a>
         </div>
         <div class="col-md">
             <a href="">
-                <h5>Updates</h5>
+                <h5><input type="submit" name="btn_admin" value="Updates"></h5>
             </a>
         </div>
     </div>
+    </form>
+    <div class="admin_content">
+        <div class="admin_users {{users_control}}">
+            <h5>USERS</h5>
+            <div>
+                <form action="" method="post">
+                    <input type="submit" value="new" class="btn">
+
+            </form>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">userId</th>
+                        <th scope="col">Names</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Reg. Date</th>
+                        <th scope="col">subscription</th>
+                        <th scope="col">Status</th>
+                        <th scope="col"> Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark Smith</td>
+                        <td>123 Home street, JHB</td>
+                        <td>22 Jun 2012</td>
+                        <td>basic</td>
+                        <td>Verified</td>
+                        <td><select id="inputState" class=" form__input form-control-sm" name="userType">
+                                <option >Edit</option>
+                                <option>Delete</option>
+                                <option>Verify</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>John Howard</td>
+                        <td>123 Scale street, DBN</td>
+                        <td>12 Jul 2020</td>
+                        <td>premium</td>
+                        <td>Verified</td>
+                        <td><select id="inputState" class=" form__input form-control-sm" name="userType">
+                                <option selected>Edit</option>
+                                <option>Delete</option>
+                                <option>Verify</option>
+                            </select></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="admin_posts {{posts_control}}">
+            <h5>POSTS</h5>
+             <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">userId</th>
+                        <th scope="col">postId</th>
+                        <th scope="col">post Content</th>
+                        <th scope="col">Post Date</th>
+                        <th scope="col"> Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>001</td>
+                        <td>crimes in sandon</td>
+                        <td>22 Jun 2012</td>
+                        <td><select id="inputState" class=" form__input form-control-sm" name="userType">
+                                <option >Edit</option>
+                                <option>Delete</option>
+                                <option>Verify</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>002</td>
+                        <td>Tips from experts</td>
+                        <td>12 Jul 2020</td>
+                        <td><select id="inputState" class=" form__input form-control-sm" name="userType">
+                                <option selected>Edit</option>
+                                <option>Delete</option>
+                                <option>Verify</option>
+                            </select></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="admin_updates {{updates_control}}">
+            
+            <h5>UPDATES</h5>
+            <div>
+                <form action="" method="post">
+                    <input type="submit" value="new" class="btn">
+
+            </form>
+            </div>
+             <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">updateId</th>
+                        <th scope="col">Tittle</th>
+                        <th scope="col">Content</th>
+                        <th scope="col">media</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">001</th>
+                        <td>App udtates</td>
+                        <td>new ways of how to</td>
+                        <td>Image</td>
+                        
+                        <td><select id="inputState" class=" form__input form-control-sm" name="userType">
+                                <option >Edit</option>
+                                <option>Delete</option>
+                                <option>Verify</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">002</th>
+                        <td>Gov to invest in Cyber</td>
+                        <td>department of Intelligence has </td>
+                        <td>Video0</td>
+                        
+                        <td><select id="inputState" class=" form__input form-control-sm" name="userType">
+                                <option selected>Edit</option>
+                                <option>Delete</option>
+                                <option>Verify</option>
+                            </select></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
 </div>

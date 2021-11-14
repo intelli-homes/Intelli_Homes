@@ -555,10 +555,10 @@ form{
     align-content: center;
     padding: 4px;
     margin: 1px;
-    color: var(--fith);
+    color: var(--);
     border-radius: 3px;
-    border: 2px var(--fouth);
-    background-color: var(--primary);
+    border: 1px var(--fouth);
+    background-color: var(--fith);
 }
 .admin_home > div > a > h5{
     text-decoration: none;
@@ -566,10 +566,12 @@ form{
     align-content: center;
     padding: 4px;
     margin: 1px;
-    color: var(--fith);
+    color: var(--primary);
+    font-size: large;
+    font-weight: bold;
     border-radius: 3px;
     border: 2px var(--fouth);
-    background-color: var(--primary);
+    background-color: var(--fith);
 }
 .admin_home > div > a:hover{
     text-decoration: none;
@@ -583,6 +585,45 @@ form{
 
 .admin_home{
     padding: 2px;
+}
+
+.admin_dashboard{
+    padding: 7px;
+    background-color: var(--fith);
+    color: var(--secondary);
+}
+
+.admin_wrap{
+    background-color: var(--primary);
+    padding: 4px;
+   
+    
+}
+.admin_fluid{
+    background-color: var(--base);
+    margin: 3px;
+    padding: 7px;
+}
+
+th{
+    color: var(--secondary);
+}
+td{
+    color: var(--fith);
+}
+
+.admin_users > h5, .admin_posts > h5, .admin_updates > h5{
+    padding: 3px;
+    background-color: var(--fouth);
+    color: var(--secondary);
+    float: left;
+}
+
+.hidden{
+    display: none;
+}
+.show{
+    display: grid;
 }
 .card {
     background-color: var(--primary);
