@@ -128,8 +128,8 @@ app.post('/register', function (req, res) {
 app.get('/admin', function (req, res) {
     
     users_control = admin.returnuser()
-    posts_control = admin.returnupdate()
-    updates_control = admin.returnpost()
+    updates_control = admin.returnupdate()
+    posts_control = admin.returnpost()
     console.log(users_control)
     res.render('admin/index', {
         users_control: users_control,
@@ -144,7 +144,7 @@ app.post('/admin', function (req, res) {
     btn = req.body.btn_admin
     // console.log(btn)
     if (btn === 'Posts') {
-        admin.showuser()
+        admin.showpost()
         console.log(btn)
     }
     if (btn === 'Updates') {
@@ -152,7 +152,7 @@ app.post('/admin', function (req, res) {
         console.log(btn)
     }
     if (btn === 'Users') {
-        admin.showpost()
+        admin.showuser()
         console.log(btn)
     }
 

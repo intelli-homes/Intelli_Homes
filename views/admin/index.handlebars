@@ -25,10 +25,122 @@
         <div class="admin_users {{users_control}}">
             <h5>USERS</h5>
             <div>
-                <form action="" method="post">
-                    <input type="submit" value="new" class="btn">
+                
+                    <input type="button" value="new" class="btn" data-toggle="modal" data-target="#myModal">
+
+            
+            {{!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button> --}}
+
+  <!-- Modal -->
+  <div class=" container modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">New User</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="/register" class="card-body1">
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+
+                        <div class="form-outline">
+                            <input placeholder="First Name" name="firstName" type="text" id="firstName"
+                                class="form-control form-control-lg" />
+                            {{!-- <label class="form-label" for="firstName">First Name</label> --}}
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 mb-4">
+
+                        <div class="form-outline">
+                            <input placeholder="Last Name" name="lastName" type="text" id="lastName"
+                                class="form-control form-control-lg" />
+                            {{!-- <label class="form-label" for="lastName">Last Name</label> --}}
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                        <div class='input-group date form-outline' id='datetimepicker5'>
+                            <input placeholder="Date of birth" name="dob" type='text' class="form-control" />
+                            {{!-- <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span> --}}
+                            {{!-- <label class="form-label" for="datetimepicker5">Date of birth</label> --}}
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 mb-4 form-outline">
+
+                        <h6 class="mb-2 pb-1">Gender: </h6>
+
+                        <div class="form-check form-check-inline">
+                            <input placeholder="Gender" class="form-check-input" type="radio" name="gender" id="female"
+                                value="female" checked />
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input placeholder="Gender" class="form-check-input" type="radio" name="gender" id="male"
+                                value="male" />
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+
+                        <div class="form-outline">
+                            <input placeholder="Email" name="email" type="email" id="emailAddress"
+                                class="form-control form-control-lg" />
+                            {{!-- <label class="form-label" for="emailAddress">Email</label> --}}
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 mb-4 pb-2">
+
+                        <div class="form-outline">
+                            <input placeholder="Phone Number" name="phonenumber" type="tel" id="phoneNumber"
+                                class="form-control form-control-lg" />
+                            {{!-- <label class="form-label" for="phoneNumber">Phone Number</label> --}}
+                        </div>
+
+                    </div>
+                    <div class="row">
+                    <div class="col-12">
+
+                        <div class="form-outline">
+                            <input placeholder="Upload an image" type="file" name="avator" id="avator">
+                            {{!-- <label class="form-label" for="avator">Upload an image</label> --}}
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                
+
+                <div class="mt-4 pt-2">
+                    <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                </div>
+
+                
 
             </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button btn-sm" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
             </div>
             <table class="table table-striped">
                 <thead>
@@ -116,10 +228,12 @@
             
             <h5>UPDATES</h5>
             <div>
+                
                 <form action="" method="post">
                     <input type="submit" value="new" class="btn">
 
             </form>
+            
             </div>
              <table class="table table-striped">
                 <thead>
