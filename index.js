@@ -3,16 +3,19 @@ const exphbs = require("express-handlebars");
 const session = require("express-session");
 const { Client } = require("pg");
 const ad = require("./admin");
-
+require('dotenv').config() 
 const admin = ad();
 
-const client = new Client({
-  user: "tzrshwebdhrysp",
-  password: "eba676700c384bc03e60a7e05ae371e30a43d6f0ea53c02cc5eae8f383b90feb",
-  port: "5432",
-  host: "ec2-52-54-237-144.compute-1.amazonaws.com",
-  database: "dfpvabsnh8th5e",
-});
+
+const devConfig = `postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}:@${process.env.PG_HOST}:${process.env.PG_PORT}:${process.env.PG_DATABASE}`
+ 
+
+const proConfig = connectionString = process.env.DATABASE_URL
+
+
+const client = new Client(
+    process.env.NODE_ENV === "production" ? proConfig : devConfig
+);
 
 const app = express();
 const PORT = process.env.PORT || 3017;
