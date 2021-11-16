@@ -32,7 +32,7 @@
                     <div class="col-md-6 mb-4 d-flex align-items-center">
 
                         <div class='input-group date form-outline' id='datetimepicker5'>
-                            <input placeholder="Date of birth" name="dob" type='text' class="form-control" />
+                            <input placeholder="Date of birth" name="DOB" type='text' class="form-control" />
                             {{!-- <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span> --}}
@@ -60,11 +60,37 @@
                     </div>
                 </div>
 
+                                <div class="row">
+                    <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                        <div class='input-group date form-outline' id='datetimepicker5'>
+                            <input placeholder="Password" name="password" type='password' class="form-control" />
+                            {{!-- <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span> --}}
+                            {{!-- <label class="form-label" for="datetimepicker5">Date of birth</label> --}}
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 mb-4 form-outline">
+
+               
+
+                        <div class="input-group date form-outline">
+                                                        <input placeholder="Re-type Password" name="password2" type='password2' class="form-control" />
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-6 mb-4 pb-2">
 
                         <div class="form-outline">
-                            <input placeholder="Email" name="email" type="email" id="emailAddress"
+                            <input placeholder="Email" name="email" type="email" id="email"
                                 class="form-control form-control-lg" />
                             {{!-- <label class="form-label" for="emailAddress">Email</label> --}}
                         </div>
@@ -73,20 +99,28 @@
                     <div class="col-md-6 mb-4 pb-2">
 
                         <div class="form-outline">
-                            <input placeholder="Phone Number" name="phonenumber" type="tel" id="phoneNumber"
+                            <input placeholder="Phone Number" name="phone" type="text" id="phone"
                                 class="form-control form-control-lg" />
                             {{!-- <label class="form-label" for="phoneNumber">Phone Number</label> --}}
                         </div>
 
                     </div>
                     <div class="row">
-                    <div class="col-12">
+                    <div class="col-md-6 mb-4 pb-2">
 
                         <div class="form-outline">
                             <input placeholder="Upload an image" type="file" name="avator" id="avator">
                             {{!-- <label class="form-label" for="avator">Upload an image</label> --}}
                         </div>
                     </div>
+                     <div class="col-md-6 mb-4 pb-2">
+                                <div class="form-outline">
+                                    <select id="inputState" class=" form__input" name="role">
+                                    <option selected>User</option>
+                                    <option disabled>Admin</option>
+                                </select>
+                                </div>
+                            </div>
                 </div>
                 </div>
 

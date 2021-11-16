@@ -67,7 +67,7 @@
                     <div class="col-md-6 mb-4 d-flex align-items-center">
 
                         <div class='input-group date form-outline' id='datetimepicker5'>
-                            <input placeholder="Date of birth" name="dob" type='text' class="form-control" />
+                            <input placeholder="Date of birth" name="DOB" type='text' class="form-control" />
                             {{!-- <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span> --}}
@@ -95,11 +95,37 @@
                     </div>
                 </div>
 
+                                <div class="row">
+                    <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                        <div class='input-group date form-outline' id='datetimepicker5'>
+                            <input placeholder="Password" name="password" type='password' class="form-control" />
+                            {{!-- <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span> --}}
+                            {{!-- <label class="form-label" for="datetimepicker5">Date of birth</label> --}}
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 mb-4 form-outline">
+
+               
+
+                        <div class="input-group date form-outline">
+                                                        <input placeholder="Re-type Password" name="password2" type='password2' class="form-control" />
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-6 mb-4 pb-2">
 
                         <div class="form-outline">
-                            <input placeholder="Email" name="email" type="email" id="emailAddress"
+                            <input placeholder="Email" name="email" type="email" id="email"
                                 class="form-control form-control-lg" />
                             {{!-- <label class="form-label" for="emailAddress">Email</label> --}}
                         </div>
@@ -108,20 +134,28 @@
                     <div class="col-md-6 mb-4 pb-2">
 
                         <div class="form-outline">
-                            <input placeholder="Phone Number" name="phonenumber" type="tel" id="phoneNumber"
+                            <input placeholder="Phone Number" name="phone" type="text" id="phone"
                                 class="form-control form-control-lg" />
                             {{!-- <label class="form-label" for="phoneNumber">Phone Number</label> --}}
                         </div>
 
                     </div>
                     <div class="row">
-                    <div class="col-12">
+                    <div class="col-md-6 mb-4 pb-2">
 
                         <div class="form-outline">
                             <input placeholder="Upload an image" type="file" name="avator" id="avator">
                             {{!-- <label class="form-label" for="avator">Upload an image</label> --}}
                         </div>
                     </div>
+                     <div class="col-md-6 mb-4 pb-2">
+                                <div class="form-outline">
+                                    <select id="inputState" class=" form__input" name="role">
+                                    <option selected>User</option>
+                                    <option>Admin</option>
+                                </select>
+                                </div>
+                            </div>
                 </div>
                 </div>
 
@@ -147,40 +181,33 @@
                     <tr>
                         <th scope="col">userId</th>
                         <th scope="col">Names</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Reg. Date</th>
-                        <th scope="col">subscription</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">DOB</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col"> Role</th>
                         <th scope="col"> Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark Smith</td>
-                        <td>123 Home street, JHB</td>
-                        <td>22 Jun 2012</td>
-                        <td>basic</td>
-                        <td>Verified</td>
+                    {{#each results}}
+                        <tr>
+                        <th scope="row">{{userid}}</th>
+                        <td>{{firstname}} {{lastname}}</td>
+                        <td>{{dob}}</td>
+                        <td>{{gender}}</td>
+                        <td>{{email}}</td>
+                        <td>{{phone}}</td>
+                        <td>{{userole}}</td>
+                        <td><img src="{{avator}}" alt=""></td>
                         <td><select id="inputState" class=" form__input form-control-sm" name="userType">
                                 <option >Edit</option>
                                 <option>Delete</option>
                                 <option>Verify</option>
                             </select></td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>John Howard</td>
-                        <td>123 Scale street, DBN</td>
-                        <td>12 Jul 2020</td>
-                        <td>premium</td>
-                        <td>Verified</td>
-                        <td><select id="inputState" class=" form__input form-control-sm" name="userType">
-                                <option selected>Edit</option>
-                                <option>Delete</option>
-                                <option>Verify</option>
-                            </select></td>
-                    </tr>
+                    {{/each}}
+                    
 
                 </tbody>
             </table>
@@ -235,6 +262,23 @@
                     <input type="button" value="new" class="btn" data-toggle="modal" data-target="#myModal">
 
             </form>
+            <div class="update_input">
+            <form action="/post_update" method="post">
+            <div>
+                <input type="text" name="tittle" id="" placeholder="Tittle">
+                <div class="d-flex justify-content-center">
+              <div class="btn btn-mdb-color btn-rounded float-left">
+                <span>Supporting Media</span>
+                <input type="file" name="image">
+              </div>
+            </div>
+                <textarea class="txtpost" name="content" id="" cols="50" rows="5"
+                    placeholder="Post an update!"></textarea>
+            </div>
+            <div class="">
+                <button type="submit" class=" btn-sm update_btn">Share</button>
+            </div></form>
+        </div>
             
             </div>
              <table class="table table-striped">
@@ -243,15 +287,19 @@
                         <th scope="col">updateId</th>
                         <th scope="col">Tittle</th>
                         <th scope="col">Content</th>
-                        <th scope="col">media</th>
+                        <th scope="col">date</th>
+                        <th scope="col">Media</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                   {{#each results}}
                     <tr>
-                        <th scope="row">001</th>
-                        <td>App udtates</td>
-                        <td>new ways of how to</td>
-                        <td>Image</td>
+                        <th scope="row">{{updateid}}</th>
+                        <td>{{tittle}}</td>
+                        <td>{{post_content}}</td>
+                        <td>{{created_on}}</td>
+                        <td>{{image}}</td>
                         
                         <td><select id="inputState" class=" form__input form-control-sm" name="userType">
                                 <option >Edit</option>
@@ -259,19 +307,8 @@
                                 <option>Verify</option>
                             </select></td>
                     </tr>
-                    <tr>
-                        <th scope="row">002</th>
-                        <td>Gov to invest in Cyber</td>
-                        <td>department of Intelligence has </td>
-                        <td>Video0</td>
-                        
-                        <td><select id="inputState" class=" form__input form-control-sm" name="userType">
-                                <option selected>Edit</option>
-                                <option>Delete</option>
-                                <option>Verify</option>
-                            </select></td>
-                    </tr>
-
+                 
+                    {{/each}}
                 </tbody>
             </table>
         </div>
