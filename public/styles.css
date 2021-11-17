@@ -634,6 +634,15 @@ td{
     box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
 }
 
+.card_reg {
+    background-color: var(--base);
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    margin-bottom: 30px;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
+}
+
 .update_btn{
     background-color: var(--fouth);
     color: var(--secondary);
@@ -644,6 +653,16 @@ td{
     color: var(--primary);
 }
 
+.update_input{
+ border: 2px var(--fouth);
+}
+
+.post_update{
+    margin: auto;
+    padding: 1em;
+    background-color: var(--fith);
+    width: 75%;
+}
 
 .l-bg-cherry {
     background: linear-gradient(to right, #493240, #f09) !important;
