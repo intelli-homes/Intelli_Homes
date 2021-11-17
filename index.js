@@ -1,6 +1,7 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const session = require("express-session");
+const MemoryStore = require('memorystore')(session)
 const { Client } = require("pg");
 const ad = require("./admin");
 
@@ -21,6 +22,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    }),
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: true,
