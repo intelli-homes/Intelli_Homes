@@ -3,19 +3,15 @@ const exphbs = require("express-handlebars");
 const session = require("express-session");
 const { Client } = require("pg");
 const ad = require("./admin");
-require('dotenv').config() 
+
 const admin = ad();
 
-
-const devConfig = `postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}:@${process.env.PG_HOST}:${process.env.PG_PORT}:${process.env.PG_DATABASE}`
- 
-
-const proConfig = connectionString = process.env.DATABASE_URL
-
-
-const client = new Client(
-    process.env.NODE_ENV === "production" ? proConfig : devConfig
-);
+const client = new Client({
+  user: "postgres",
+  password: "3980",
+  host: "localhost",
+  database: "Intellihomes",
+});
 
 const app = express();
 const PORT = process.env.PORT || 3017;
@@ -44,18 +40,13 @@ app.get("/", async function (req, res) {
   if (!req.session.username) {
     res.redirect("/login");
   } else {
-    await client.query("SELECT * FROM updatestb", (error, results) => {
-        if (error) {
-          throw error;
-        } else {
-          res.render("home", {
-              results: results.rows,
-            
-          });
-          // res.status(200).json(results.rows)
-          console.log(results.rows);
-        }
-      })
+    results = await client.query("SELECT * FROM updatestb")
+
+      res.render("home", {
+        results: results.rows,
+      
+    });
+    // res.status(200).json(results.rows)
   }
 });
 
@@ -87,18 +78,12 @@ app.get("/updates", async function (req, res) {
     if (!req.session.username) {
       res.redirect("/login");
     } else {
-      await client.query("SELECT * FROM updatestb", (error, results) => {
-          if (error) {
-            throw error;
-          } else {
-            res.render("updates", {
-                results2: results.rows,
-              
-            });
-            // res.status(200).json(results.rows)
-            console.log(results.rows);
-          }
-        })
+      results2 = await client.query("SELECT * FROM updatestb")
+
+        res.render("updates", {
+            results2: results.rows,
+          
+        });
     }
 });
 app.get("/notifications", function (req, res) {
@@ -217,7 +202,7 @@ app.post("/register", async function (req, res) {
     role,
     avator
   );
-  client.connect(
+  
     await client.query(
       "INSERT INTO userstb (firstName, lastName, DOB, gender, password, password2, email, phone, userole, avator ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)",
       [
@@ -236,37 +221,30 @@ app.post("/register", async function (req, res) {
         if (error) {
           throw error;
         }
-        console.log(results.rows);
-        // res.status(201).send(`User added`)
+       
       }
-    )
-  );
+    );
+ 
 
   res.redirect("/login");
 });
 
 app.get("/admin", async function (req, res) {
-  client.connect(
+  
       
-    await client.query("SELECT * FROM userstb", (error, results) => {
-      if (error) {
-        throw error;
-      } else {
-        users_control = admin.returnuser();
+    results = await client.query("SELECT * FROM userstb")
+    results2 = await client.query("SELECT * FROM updatestb")
+    users_control = admin.returnuser();
         updates_control = admin.returnupdate();
         posts_control = admin.returnpost();
         console.log(users_control);
         res.render("admin/index", {
             results: results.rows,
+            results2: results2.rows,
           users_control: users_control,
           posts_control: posts_control,
           updates_control: updates_control,
         });
-        // res.status(200).json(results.rows)
-        console.log(results.rows);
-      }
-    })
-  );
 
 
 });
