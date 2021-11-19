@@ -1,8 +1,21 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const session = require("express-session");
+const app = express();
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
+const fs = require('fs')
+// const cv = require('opencv')
+
+// const wCap = new cv.videoCapture(0)
+
+
+// setInterval(() => {
+//     io.emit('vid', 'some data')
+// }, 1000)
 // const MemoryStore = require('memorystore')(session)
 const { Client } = require("pg");
+const { start } = require("repl");
 const ad = require("./admin");
 
 const admin = ad();
@@ -14,7 +27,7 @@ const client = new Client({
   database: "Intellihomes",
 });
 
-const app = express();
+
 const PORT = process.env.PORT || 3017;
 
 // enable the req.body object - to allow us to use HTML forms
@@ -337,6 +350,86 @@ app.post('/delete_update/:update_id', async function (req,res) {
     insert_value = req.params.update_id
     results3 = await client.query("DELETE FROM userstb WHERE update_id = $1", [insert_value])
     res.redirect('/admin')
+})
+
+app.get('/videos', (req, res) => {
+    
+    const range = req.headers.range;
+    console.log(range)
+    vidpath = './videos/samplev2.mp4';
+    videoSize = fs.statSync(vidpath).size;
+    
+    chunkSize = 1 *1e+6;
+    starting = Number(range.replace(/\D/g, ''))
+    end = Math.min(starting + chunkSize, videoSize -1)
+    const contentlength =  end - starting + 1
+
+    console.log(end)
+    const headers = {
+        'Content-Range': `bytes ${starting}-${end}/${videoSize}`,
+        'Accept-Ranges': 'bytes',
+        'Content-Length': contentlength,
+        'Content-Type': 'video/mp4'
+    }
+
+    res.writeHead(206, headers)
+
+    const stream = fs.createReadStream(vidpath, {starting, end})
+    stream.pipe(res)
+})
+
+
+app.get('/videos1', (req, res) => {
+    
+    const range = req.headers.range;
+    console.log(range)
+    vidpath = './videos/samplev.mp4';
+    videoSize = fs.statSync(vidpath).size;
+    
+    chunkSize = 1 *1e+6;
+    starting = Number(range.replace(/\D/g, ''))
+    end = Math.min(starting + chunkSize, videoSize -1)
+    const contentlength =  end - starting + 1
+
+    console.log(end)
+    const headers = {
+        'Content-Range': `bytes ${starting}-${end}/${videoSize}`,
+        'Accept-Ranges': 'bytes',
+        'Content-Length': contentlength,
+        'Content-Type': 'video/mp4'
+    }
+
+    res.writeHead(206, headers)
+
+    const stream = fs.createReadStream(vidpath, {starting, end})
+    stream.pipe(res)
+})
+
+
+app.get('/videos2', (req, res) => {
+    
+    const range = req.headers.range;
+    console.log(range)
+    vidpath = './videos/samplev3.mp4';
+    videoSize = fs.statSync(vidpath).size;
+    
+    chunkSize = 1 *1e+6;
+    starting = Number(range.replace(/\D/g, ''))
+    end = Math.min(starting + chunkSize, videoSize -1)
+    const contentlength =  end - starting + 1
+
+    console.log(end)
+    const headers = {
+        'Content-Range': `bytes ${starting}-${end}/${videoSize}`,
+        'Accept-Ranges': 'bytes',
+        'Content-Length': contentlength,
+        'Content-Type': 'video/mp4'
+    }
+
+    res.writeHead(206, headers)
+
+    const stream = fs.createReadStream(vidpath, {starting, end})
+    stream.pipe(res)
 })
 app.listen(PORT, function () {
   console.log("app running at port 3017");

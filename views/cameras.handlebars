@@ -2,25 +2,51 @@
     <div class="camera_block row">
         <div class="col-md-6 pic container">
             <a href="/camera">
-            <h4 class="cam_name">Cam 1</h4></a>
-            <img class="cam img-fluid" src="cctv.jpg" alt="">
+            <h4 class="cam_name" onload="">Cam 1</h4></a>
+            
+            <video muted id="video"width="100%" height="300" id="videos" controls autoplay></video>
+            
         </div>
         <div class="col-md-6 pic container" >
             <a href="/camera">
             <h4 class="cam_name">Cam 2</h4></a>
-            <img class="cam img-fluid" src="cctv2.jpg" alt="">
+            <video muted width="100%" id="videos" controls autoplay src="http://localhost:3017/videos"> </video>
         </div>
     </div>
     <div class="camera_block row">
         <div class="col-md-6 pic container">
             <a href="/camera">
             <h4 class="cam_name">Cam 3</h4></a>
-            <img class="cam img-fluid" src="cam1.jpg" alt="">
+            <video muted id="videos" width="100%" controls autoplay src="http://localhost:3017/videos1"> </video>
         </div>
         <div class="col-md-6 pic container">
             <a href="/camera">
             <h4 class="cam_name">Cam 4</h4></a>
-            <img class="cam img-fluid" src="cam2.jpg" alt="">
+            <video muted id="videos" width="100%" controls autoplay src="http://localhost:3017/videos2"> </video>
         </div>
     </div>
 </div>
+
+<script>
+    let camera_button = document.querySelector("#start-camera");
+let video = document.querySelector("#video");
+let click_button = document.querySelector("#click-photo");
+let canvas = document.querySelector("#canvas");
+$(document).ready( async function()  {
+    let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+	video.srcObject = stream;
+});
+
+camera_button.addEventListener('click', async function() {
+   	let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+	video.srcObject = stream;
+});
+
+click_button.addEventListener('click', function() {
+   	canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+   	let image_data_url = canvas.toDataURL('image/jpeg');
+
+   	// data url of the image
+   	console.log(image_data_url);
+});
+</script>
