@@ -19,8 +19,7 @@ const { start } = require("repl");
 const ad = require("./admin");
 
 const admin = ad();
-
-//const client = new Client({
+const client = new Client({
   user: "postgres",
   password: "3980",
   host: "localhost",
@@ -58,7 +57,7 @@ app.get("/", async function (req, res) {
   username = req.session.username;
   console.log(userid+username)
   if (!req.session.username) {
-    //res.redirect("/login");
+    res.redirect("/login");
   } else {
     results = await client.query("SELECT * FROM updatestb")
     results3 = await client.query("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
@@ -97,7 +96,7 @@ app.get("/reports", function (req, res) {
 app.get("/updates", async function (req, res) {
     username = req.session.username;
     if (!req.session.username) {
-      res.redirect("/home");
+      res.redirect("/login");
     } else {
       //results2 = await client.query("SELECT * FROM updatestb")
 
@@ -109,7 +108,7 @@ app.get("/updates", async function (req, res) {
 });
 app.get("/notifications", function (req, res) {
   if (!req.session.username) {
-    res.redirect("/home");
+    res.redirect("/login");
   } else {
     res.render("notifications");
   }
@@ -124,7 +123,7 @@ app.post("/login", async function (req, res) {
   client.connect();
   
     await client.query(
-      //"SELECT * FROM userstb WHERE email = $1 AND password = $2",
+      "SELECT * FROM userstb WHERE email = $1 AND password = $2",
       [username, password],
       (error, results) => {
         if (error) {
