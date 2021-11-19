@@ -58,7 +58,7 @@ app.get("/", async function (req, res) {
   username = req.session.username;
   console.log(userid+username)
   if (!req.session.username) {
-    res.redirect("/login");
+    //res.redirect("/login");
   } else {
     //results = await client.query("SELECT * FROM updatestb")
     //results3 = await client.query("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
@@ -97,7 +97,7 @@ app.get("/reports", function (req, res) {
 app.get("/updates", async function (req, res) {
     username = req.session.username;
     if (!req.session.username) {
-      res.redirect("/login");
+      //res.redirect("/login");
     } else {
       //results2 = await client.query("SELECT * FROM updatestb")
 
@@ -109,14 +109,14 @@ app.get("/updates", async function (req, res) {
 });
 app.get("/notifications", function (req, res) {
   if (!req.session.username) {
-    res.redirect("/login");
+    //res.redirect("/login");
   } else {
     res.render("notifications");
   }
 });
 
 app.get("/login", function (req, res) {
-  res.render("login");
+  //res.render("login");
 });
 
 app.post("/login", async function (req, res) {
