@@ -20,7 +20,7 @@ const ad = require("./admin");
 
 const admin = ad();
 
-const client = new Client({
+//const client = new Client({
   user: "postgres",
   password: "3980",
   host: "localhost",
@@ -60,8 +60,8 @@ app.get("/", async function (req, res) {
   if (!req.session.username) {
     res.redirect("/login");
   } else {
-    results = await client.query("SELECT * FROM updatestb")
-    results3 = await client.query("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
+    //results = await client.query("SELECT * FROM updatestb")
+    //results3 = await client.query("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
     console.log(results3.rows[0].userid)
       res.render("home", {
         results: results.rows,
@@ -99,7 +99,7 @@ app.get("/updates", async function (req, res) {
     if (!req.session.username) {
       res.redirect("/login");
     } else {
-      results2 = await client.query("SELECT * FROM updatestb")
+      //results2 = await client.query("SELECT * FROM updatestb")
 
         res.render("updates", {
             results2: results.rows,
@@ -124,7 +124,7 @@ app.post("/login", async function (req, res) {
   client.connect();
   
     await client.query(
-      "SELECT * FROM userstb WHERE email = $1 AND password = $2",
+      //"SELECT * FROM userstb WHERE email = $1 AND password = $2",
       [username, password],
       (error, results) => {
         if (error) {
@@ -200,7 +200,7 @@ app.get("/register", function (req, res) {
   res.render("register");
 });
 
-app.post("/register", async function (req, res) {
+//app.post("/register", async function (req, res) {
   const {
     firstName,
     lastName,
@@ -226,7 +226,7 @@ app.post("/register", async function (req, res) {
     avator
   );
   
-    await client.query(
+    //await client.query(
       "INSERT INTO userstb (firstName, lastName, DOB, gender, password, password2, email, phone, userole, avator ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)",
       [
         firstName,
@@ -324,7 +324,7 @@ app.post('/post_update', async function (req, res) {
         req.body.image)
     client.connect(
         await client.query(
-          "INSERT INTO updatestb (tittle, post_content, image) VALUES ($1, $2, $3)",
+         // "INSERT INTO updatestb (tittle, post_content, image) VALUES ($1, $2, $3)",
           [
             req.body.tittle,
             req.body.content,
@@ -348,7 +348,7 @@ app.post('/post_update', async function (req, res) {
 
 app.post('/delete_update/:update_id', async function (req,res) {
     insert_value = req.params.update_id
-    results3 = await client.query("DELETE FROM userstb WHERE update_id = $1", [insert_value])
+    //results3 = await client.query("DELETE FROM userstb WHERE update_id = $1", [insert_value])
     res.redirect('/admin')
 })
 
