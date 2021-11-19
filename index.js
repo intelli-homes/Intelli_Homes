@@ -98,7 +98,7 @@ app.get("/updates", async function (req, res) {
     if (!req.session.username) {
       res.redirect("/login");
     } else {
-      //results2 = await client.query("SELECT * FROM updatestb")
+      results2 = await client.query("SELECT * FROM updatestb")
 
         res.render("updates", {
             results2: results.rows,
@@ -199,7 +199,7 @@ app.get("/register", function (req, res) {
   res.render("register");
 });
 
-//app.post("/register", async function (req, res) {
+app.post("/register", async function (req, res) {
   const {
     firstName,
     lastName,
@@ -225,7 +225,7 @@ app.get("/register", function (req, res) {
     avator
   );
   
-    //await client.query(
+    await client.query(
       "INSERT INTO userstb (firstName, lastName, DOB, gender, password, password2, email, phone, userole, avator ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)",
       [
         firstName,
