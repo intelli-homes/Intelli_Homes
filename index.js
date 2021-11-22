@@ -62,7 +62,7 @@ app.get("/", async function (req, res) {
     results = await client.query("SELECT * FROM updatestb")
     results3 = await client.query("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
     console.log(results3.rows[0].userid)
-      res.render("home", {
+      res.render("login", {
         results: results.rows,
       
     });
