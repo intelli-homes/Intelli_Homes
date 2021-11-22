@@ -62,7 +62,7 @@ app.get("/", async function (req, res) {
     results = await client.query("SELECT * FROM updatestb")
     results3 = await client.query("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
     console.log(results3.rows[0].userid)
-      res.render("login", {
+      res.render("homes", {
         results: results.rows,
       
     });
@@ -115,7 +115,7 @@ app.get("/notifications", function (req, res) {
 });
 
 app.get("/login", function (req, res) {
-  res.render("home");
+  res.render("login");
 });
 
 app.post("/login", async function (req, res) {
