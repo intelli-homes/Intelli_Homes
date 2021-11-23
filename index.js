@@ -243,12 +243,15 @@ app.post("/register", async function (req, res) {
         if (error) {
           throw error;
         }
+        else{
+          res.redirect("/login");
+        }
        
       }
     );
  
 
-  res.redirect("/login");
+  
 });
 
 app.get("/admin", async function (req, res) {
