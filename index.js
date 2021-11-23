@@ -19,7 +19,6 @@ const { start } = require("repl");
 const ad = require("./admin");
 
 const admin = ad();
-
 const client = new Client({
   user: "tzrshwebdhrysp",
   password: "eba676700c384bc03e60a7e05ae371e30a43d6f0ea53c02cc5eae8f383b90feb",
@@ -63,7 +62,7 @@ app.get("/", async function (req, res) {
     results = await client.query("SELECT * FROM updatestb")
     results3 = await client.query("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
     console.log(results3.rows[0].userid)
-      res.render("home", {
+      res.render("homes", {
         results: results.rows,
       
     });
@@ -324,7 +323,7 @@ app.post('/post_update', async function (req, res) {
         req.body.image)
     client.connect(
         await client.query(
-          "INSERT INTO updatestb (tittle, post_content, image) VALUES ($1, $2, $3)",
+         // "INSERT INTO updatestb (tittle, post_content, image) VALUES ($1, $2, $3)",
           [
             req.body.tittle,
             req.body.content,
@@ -348,7 +347,7 @@ app.post('/post_update', async function (req, res) {
 
 app.post('/delete_update/:update_id', async function (req,res) {
     insert_value = req.params.update_id
-    results3 = await client.query("DELETE FROM userstb WHERE update_id = $1", [insert_value])
+    //results3 = await client.query("DELETE FROM userstb WHERE update_id = $1", [insert_value])
     res.redirect('/admin')
 })
 
