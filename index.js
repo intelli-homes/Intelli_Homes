@@ -53,20 +53,25 @@ app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
 app.get("/", async function (req, res) {
-    userid = req.session.userid
-  username = req.session.username;
+
   // console.log('your user name '+req.sessionID)
   if (!req.session.username) {
+
     res.redirect("/login");
   } else {
+    userid = req.session.userid
+    results5 =await client.query("SELECT * FROM userstb WHERE email = $1", [req.session.username]);
     results = await client.query("SELECT * FROM updatestb")
     results3 = await client.query("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
     results4 = await client.query("select userstb.firstname, userstb.lastname, poststb.tittle, poststb.postcontent, poststb.post_date, poststb.postmedia from userstb INNER JOIN poststb ON userstb.userid = poststb.userid")
     console.log(results3.rows[0].userid)
+    console.log(results5.rows)
    // console.log(results4.rows)
       res.render("home", {
+        
         results: results.rows,
         results4: results4.rows,
+        results5: results5.rows[0]
       
     });
     // res.status(200).json(results.rows)
