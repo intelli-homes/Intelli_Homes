@@ -20,10 +20,10 @@ const ad = require("./admin");
 
 const admin = ad();
 const client = new Client({
-  user: "tzrshwebdhrysp",
-  password: "eba676700c384bc03e60a7e05ae371e30a43d6f0ea53c02cc5eae8f383b90feb",
-  host: "ec2-52-54-237-144.compute-1.amazonaws.com",
-  database: "dfpvabsnh8th5e",
+  user: "postgres",
+  password: "3980",
+  host: "localhost",
+  database: "Intellihomes",
 });
 
 
@@ -62,7 +62,7 @@ app.get("/", async function (req, res) {
     results = await client.query("SELECT * FROM updatestb")
     results3 = await client.query("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
     console.log(results3.rows[0].userid)
-      res.render("homes", {
+      res.render("home", {
         results: results.rows,
       
     });
