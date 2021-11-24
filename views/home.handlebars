@@ -26,13 +26,21 @@
     </div>
     <div class="col-md-6 middle">
         <div class="post_input">
-            <div>
-                <textarea class="txtpost" name="post" id="" cols="50" rows="5"
+           <form action="/makepost" method="post">
+           <div class="form-group">
+             <label for=""></label>
+             <input type="text"
+               class="form-control txtpost" name="tittle" id=""  placeholder="Enter Tittle!">
+           </div>
+               <div class="form-group">
+                <textarea class="txtpost" name="postcontent" id="" cols="50" rows="5"
                     placeholder="What's in your mind?"></textarea>
             </div>
-            <div class="middleb">
+            <div class="middleb form-group">
                 <button type="submit" class="mdl-btn btn-sm btn-primary">Post</button>
             </div>
+           </form> 
+
         </div>
         <div class="post_input1 ">
             

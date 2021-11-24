@@ -55,7 +55,7 @@ app.set("view engine", "handlebars");
 app.get("/", async function (req, res) {
     userid = req.session.userid
   username = req.session.username;
-  console.log(userid+username)
+  // console.log('your user name '+req.sessionID)
   if (!req.session.username) {
     res.redirect("/login");
   } else {
@@ -63,7 +63,7 @@ app.get("/", async function (req, res) {
     results3 = await client.query("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
     results4 = await client.query("select userstb.firstname, userstb.lastname, poststb.tittle, poststb.postcontent, poststb.post_date, poststb.postmedia from userstb INNER JOIN poststb ON userstb.userid = poststb.userid")
     console.log(results3.rows[0].userid)
-    console.log(results4.rows)
+   // console.log(results4.rows)
       res.render("home", {
         results: results.rows,
         results4: results4.rows,
@@ -143,7 +143,7 @@ app.post("/login", async function (req, res) {
             req.session.userid = req.body.userid;
             req.session.password = req.body.password;
             console.log(
-                email + req.body.username + req.body.password
+              req.session.userid
             );
 
             if (results) {
@@ -262,7 +262,7 @@ app.get("/admin", async function (req, res) {
       
     results = await client.query("SELECT * FROM userstb")
     results2 = await client.query("SELECT * FROM updatestb")
-    results2 = await client.query("SELECT * FROM poststb")
+    results3 = await client.query("select userstb.firstname, userstb.lastname, poststb.tittle, poststb.postcontent, poststb.post_date, poststb.postmedia from userstb INNER JOIN poststb ON userstb.userid = poststb.userid")
         
         users_control = admin.returnuser();
         update_input_control = admin.returnupdate_input();
@@ -331,7 +331,7 @@ app.post('/post_update', async function (req, res) {
         req.body.image)
     client.connect(
         await client.query(
-         // "INSERT INTO updatestb (tittle, post_content, image) VALUES ($1, $2, $3)",
+          "INSERT INTO updatestb (tittle, post_content, image) VALUES ($1, $2, $3)",
           [
             req.body.tittle,
             req.body.content,
@@ -413,10 +413,50 @@ app.get('/videos1', (req, res) => {
 })
 
 
+app.post('/makepost', async function (req,res) {
+  userid = req.session.userid
+  username = req.session.username;
+  // console.log('your user name '+req.sessionID)
+  if (!req.session.username) {
+    res.redirect("/login");
+  } else {
+    console.log('your tittle is '+req.body.tittle + ' and your conntent is: '+req.body.postcontent)
+   
+    results3 = await client.query("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
+    results4 = results3.rows[0].userid
+    console.log(results3.rows[0].userid)
+   // console.log(results4.rows)
+   await client.query(
+    "INSERT INTO poststb  (userid, tittle, postcontent) VALUES ($1, $2, $3)",
+    [
+      results4,
+      req.body.tittle,
+      req.body.postcontent,
+      
+      
+    ],
+    (error, results) => {
+      if (error) {
+          throw error;
+        }
+        else{
+          res.redirect("/");
+        }
+      
+      // res.status(201).send(`User added`)
+    }
+  )
+
+  }
+});
+
+
+
+
 app.get('/videos2', (req, res) => {
     
     const range = req.headers.range;
-    console.log(range)
+    // console.log(range)
     vidpath = './videos/samplev3.mp4';
     videoSize = fs.statSync(vidpath).size;
     
@@ -425,7 +465,7 @@ app.get('/videos2', (req, res) => {
     end = Math.min(starting + chunkSize, videoSize -1)
     const contentlength =  end - starting + 1
 
-    console.log(end)
+    // console.log(end)
     const headers = {
         'Content-Range': `bytes ${starting}-${end}/${videoSize}`,
         'Accept-Ranges': 'bytes',
