@@ -61,9 +61,12 @@ app.get("/", async function (req, res) {
   } else {
     results = await client.query("SELECT * FROM updatestb")
     results3 = await client.query("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
+    results4 = await client.query("select userstb.firstname, userstb.lastname, poststb.tittle, poststb.postcontent, poststb.post_date, poststb.postmedia from userstb INNER JOIN poststb ON userstb.userid = poststb.userid")
     console.log(results3.rows[0].userid)
+    console.log(results4.rows)
       res.render("home", {
         results: results.rows,
+        results4: results4.rows,
       
     });
     // res.status(200).json(results.rows)
@@ -259,6 +262,7 @@ app.get("/admin", async function (req, res) {
       
     results = await client.query("SELECT * FROM userstb")
     results2 = await client.query("SELECT * FROM updatestb")
+    results2 = await client.query("SELECT * FROM poststb")
         
         users_control = admin.returnuser();
         update_input_control = admin.returnupdate_input();
@@ -270,6 +274,7 @@ app.get("/admin", async function (req, res) {
         res.render("admin/index", {
             results: results.rows,
             results2: results2.rows,
+            results3: results3.rows,
 
           users_control: users_control,
           posts_control: posts_control,
