@@ -33,10 +33,12 @@
     "memorystore": "^1.6.6",
     "mongodb": "^4.1.4",
     "mongoose": "^6.0.12",
+    "openweather-apis": "^4.4.2",
     "pg": "^8.7.1",
     "socket.io": "^4.4.0",
     "sqlite": "^4.0.23",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "weather-js": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

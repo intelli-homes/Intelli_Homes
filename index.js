@@ -5,6 +5,8 @@ const app = express();
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
 const fs = require('fs')
+const weather = require('weather-js')
+
 // const cv = require('opencv')
 
 // const wCap = new cv.videoCapture(0)
@@ -54,11 +56,17 @@ app.set("view engine", "handlebars");
 
 app.get("/", async function (req, res) {
 
+
+
+
   // console.log('your user name '+req.sessionID)
   if (!req.session.username) {
 
     res.redirect("/login");
   } else {
+   
+
+
     userid = req.session.userid
     results5 =await client.query("SELECT * FROM userstb WHERE email = $1", [req.session.username]);
     results = await client.query("SELECT * FROM updatestb")
@@ -67,13 +75,29 @@ app.get("/", async function (req, res) {
     console.log(results3.rows[0].userid)
     console.log(results5.rows)
    // console.log(results4.rows)
-      res.render("home", {
-        
-        results: results.rows,
-        results4: results4.rows,
-        results5: results5.rows[0]
+
+   weather.find({search: 'Johannesburg, ZA', degreeType: 'C'}, function(err, result) {
+    if(err) console.log(err);
+  
+    w1 = result[0]['current']['temperature']
+    w2 = result[0]['current']['skytext']
+    d = new Date();
+    date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+    time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    console.log(result)
+    res.render("home", {
+      w1 : w1,
+      w2 : w2,
+
+      date : date,
+      time : time,
+      results: results.rows,
+      results4: results4.rows,
+      results5: results5.rows[0]
+    
+  });
+  });
       
-    });
     // res.status(200).json(results.rows)
   }
 });
@@ -218,8 +242,10 @@ app.post("/register", async function (req, res) {
     email,
     phone,
     role,
+    provinces,
     avator,
   } = req.body;
+
   console.log(
     firstName,
     lastName,
@@ -230,11 +256,12 @@ app.post("/register", async function (req, res) {
     email,
     phone,
     role,
+    provinces,
     avator
   );
   
     await client.query(
-      "INSERT INTO userstb (firstName, lastName, DOB, gender, password, password2, email, phone, userole, avator ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)",
+      "INSERT INTO userstb (firstName, lastName, DOB, gender, password, password2, email, phone, userole, provinces, avator ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)",
       [
         firstName,
         lastName,
@@ -245,6 +272,7 @@ app.post("/register", async function (req, res) {
         email,
         phone,
         role,
+        provinces,
         avator,
       ],
       (error, results) => {
