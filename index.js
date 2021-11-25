@@ -3,10 +3,11 @@ const exphbs = require("express-handlebars");
 const session = require("express-session");
 const app = express();
 const server = require('http').Server(app)
-const io = require('socket.io')(server)
 const fs = require('fs')
 const weather = require('weather-js')
 
+
+// const io = require('socket.io')(server)
 // const cv = require('opencv')
 
 // const wCap = new cv.videoCapture(0)
@@ -22,10 +23,10 @@ const ad = require("./admin");
 
 const admin = ad();
 const client = new Client({
-  user: "postgres",
-  password: "3980",
-  host: "localhost",
-  database: "Intellihomes",
+  user: "tzrshwebdhrysp",
+  password: "eba676700c384bc03e60a7e05ae371e30a43d6f0ea53c02cc5eae8f383b90feb",
+  host: "ec2-52-54-237-144.compute-1.amazonaws.com",
+  database: "dfpvabsnh8th5e",
 });
 
 
