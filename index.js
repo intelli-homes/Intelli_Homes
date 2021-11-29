@@ -368,6 +368,11 @@ open({
     res.redirect("/admin");
   });
 
+  app.get("/test", function (req, res) {
+    admin.showupdate();
+    res.render("test")
+  });
+
   app.post("/post_update", async function (req, res) {
     console.log(req.body.tittle + req.body.content + req.body.image);
 
