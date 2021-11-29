@@ -17,6 +17,12 @@ const weather = require('weather-js')
 //     io.emit('vid', 'some data')
 // }, 1000)
 // const MemoryStore = require('memorystore')(session)
+let useSSL = false;
+let local = process.env.LOCAL || false;
+if (process.env.DATABASE_URL && !local){
+    useSSL = true;
+} 
+
 const pg = require("pg");
 const { start } = require("repl");
 const ad = require("./admin");
