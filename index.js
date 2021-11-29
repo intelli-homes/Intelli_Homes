@@ -61,10 +61,16 @@ open({
       results4 = await db.all(
         "select userstb.firstname, userstb.lastname, poststb.tittle, poststb.postcontent, poststb.post_date, poststb.postmedia from userstb INNER JOIN poststb ON userstb.userid = poststb.userid ORDER BY poststb.post_date DESC"
       );
+
+      // avator = await db.all(
+      //   "select * from userstb where userid = $1", results3
+      // );
       // console.log(results3.rows[0].userid)
       // console.log(results5.rows)
       // console.log(results4.rows)
-
+      console.log(results5.avator)
+     
+      
       weather.find(
         { search: "Johannesburg, ZA", degreeType: "C" },
         function (err, result) {
@@ -200,7 +206,7 @@ open({
           req.body.userType == ress.userole
         ) {
           res.redirect("/");
-          console.log("user pgae" + email);
+          // console.log("user pgae" + email);
         } else if (
           req.body.userType == "Admin" &&
           req.body.username == ress.email &&
@@ -293,9 +299,7 @@ open({
   app.get("/admin", async function (req, res) {
     results = await db.all("SELECT * FROM userstb");
     results2 = await db.all("SELECT * FROM updatestb");
-    results3 = await db.all(
-      "select userstb.firstname, userstb.lastname, poststb.tittle, poststb.postcontent, poststb.post_date, poststb.postmedia from userstb INNER JOIN poststb ON userstb.userid = poststb.userid"
-    );
+    results3 = await db.all("select userstb.firstname, userstb.lastname, poststb.tittle, poststb.postcontent, poststb.post_date, poststb.postmedia from userstb INNER JOIN poststb ON userstb.userid = poststb.userid");
 
     users_control = admin.returnuser();
     update_input_control = admin.returnupdate_input();
