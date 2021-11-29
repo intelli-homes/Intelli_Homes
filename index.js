@@ -364,7 +364,7 @@ open({
     console.log(req.body.tittle + req.body.content + req.body.image);
 
     await db.run(
-      "INSERT INTO updatestb (tittle, post_content, image) VALUES (?, ?, $?)",
+      "INSERT INTO updatestb (tittle, post_content, image) VALUES (?, ?, ?)",
       req.body.tittle,
       req.body.content,
       req.body.image
