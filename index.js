@@ -369,7 +369,7 @@ open({
       req.body.content,
       req.body.image
     );
-    res.redirect("/admin");
+    res.redirect("/updates");
   });
 
   app.post("/delete_update/:update_id", async function (req, res) {
