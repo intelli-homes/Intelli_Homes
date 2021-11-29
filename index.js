@@ -26,7 +26,7 @@ if (process.env.DATABASE_URL && !local){
 const pg = require("pg");
 const { start } = require("repl");
 const ad = require("./admin");
-const Client = pg.pool
+const Client = pg.Pool
 
 const admin = ad();
 
