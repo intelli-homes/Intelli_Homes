@@ -1,10 +1,10 @@
 CREATE TABLE userstb( userid SERIAL PRIMARY KEY, firstname VARCHAR(32), lastname VARCHAR(32), 
-				   DOB VARCHAR(64), gender VARCHAR(32), password text, password2 text,
+				   DOB VARCHAR(64), gender VARCHAR(32), provinces VARCHAR(50), password text, password2 text,
 				   email text unique, phone text, userole text, avator bytea);
 				
 				
-INSERT INTO userstb( firstname, lastname, DOB, gender, password, password2, email, phone, userole, avator) 
-VALUES('Ramahadi', 'Moheane', ' 3 may', 'male', '1234', '1234', 'moheanerj@gmail', '0788356810', 'Admin', 'C:/Users/Lenovo-User/Pictures/Screenshots/1.jpg'); 
+INSERT INTO userstb( firstname, lastname, DOB, gender, provinces, password, password2, email, phone, userole, avator) 
+VALUES('Ramahadi', 'Moheane', ' 3 may', 'male','Gauteng', '1234', '1234', 'moheanerj@gmail.com', '0788356810', 'Admin', 'C:/Users/Lenovo-User/Pictures/Screenshots/1.jpg'); 
 
 
 CREATE TABLE updatestb( updateid SERIAL PRIMARY KEY, tittle VARCHAR(32), post_content VARCHAR(2000), created_on timestamp without time zone DEFAULT now(), image bytea);
@@ -25,11 +25,3 @@ According to Sandton Police Station spokesperson Captain Granville Meyer, the 47
 
 
 
-select * from userstb
-
-select * from poststb
-
-select userstb.firstname, userstb.lastname, poststb.tittle, poststb.postcontent
-from userstb
-INNER JOIN
-poststb ON userstb.userid = poststb.userid

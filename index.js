@@ -6,33 +6,13 @@ const server = require('http').Server(app)
 const fs = require('fs')
 const weather = require('weather-js')
 
-
+const sqlite3 = require('sqlite3');
+const { open } = require('sqlite');
 // const io = require('socket.io')(server)
 // const cv = require('opencv')
 
 // const wCap = new cv.videoCapture(0)
 
-
-
-let local = process.env.LOCAL || false;
-if (process.env.DATABASE_URL && !local){
-    useSSL = true;
-} 
-
-const pg = require("pg");
-const { start } = require("repl");
-const ad = require("./admin");
-const Pool = pg.Pool;
-
-// should we use a SSL connection
-
-// which db connection to use
-const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/my_products';
-
-const pool = new Pool({
-    connectionString,
-    ssl : false
-  });
 
 const PORT = process.env.PORT || 3017;
 
@@ -59,6 +39,14 @@ app.use(express.static("public"));
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
+open({
+	filename: './data.db',
+	driver: sqlite3.Database
+}).then(async (db) => {
+
+
+	await db.migrate();
+  
 app.get("/", async function (req, res) {
 
 
@@ -73,10 +61,10 @@ app.get("/", async function (req, res) {
 
 
     userid = req.session.userid
-    results5 =await client.query("SELECT * FROM userstb WHERE email = $1", [req.session.username]);
-    results = await client.query("SELECT * FROM updatestb")
-    results3 = await client.query("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
-    results4 = await client.query("select userstb.firstname, userstb.lastname, poststb.tittle, poststb.postcontent, poststb.post_date, poststb.postmedia from userstb INNER JOIN poststb ON userstb.userid = poststb.userid")
+    results5 =await db.all("SELECT * FROM userstb WHERE email = $1", [req.session.username]);
+    results = await db.all("SELECT * FROM updatestb")
+    results3 = await db.get("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
+    results4 = await db.all("select userstb.firstname, userstb.lastname, poststb.tittle, poststb.postcontent, poststb.post_date, poststb.postmedia from userstb INNER JOIN poststb ON userstb.userid = poststb.userid")
     console.log(results3.rows[0].userid)
     console.log(results5.rows)
    // console.log(results4.rows)
@@ -175,7 +163,7 @@ app.get("/updates", async function (req, res) {
     if (!req.session.username) {
       res.redirect("/login");
     } else {
-      results2 = await client.query("SELECT * FROM updatestb")
+      results2 = await db.all("SELECT * FROM updatestb")
 
         res.render("updates", {
             results2: results.rows,
@@ -197,9 +185,8 @@ app.get("/login", function (req, res) {
 
 app.post("/login", async function (req, res) {
   const { username, password, userType } = req.body;
-  client.connect();
   
-    await client.query(
+    await db.all(
       "SELECT * FROM userstb WHERE email = $1 AND password = $2",
       [username, password],
       (error, results) => {
@@ -305,7 +292,7 @@ app.post("/register", async function (req, res) {
     avator
   );
   
-    await client.query(
+    await db.run(
       "INSERT INTO userstb (firstName, lastName, DOB, gender, password, password2, email, phone, userole, provinces, avator ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)",
       [
         firstName,
@@ -338,9 +325,9 @@ app.post("/register", async function (req, res) {
 app.get("/admin", async function (req, res) {
   
       
-    results = await client.query("SELECT * FROM userstb")
-    results2 = await client.query("SELECT * FROM updatestb")
-    results3 = await client.query("select userstb.firstname, userstb.lastname, poststb.tittle, poststb.postcontent, poststb.post_date, poststb.postmedia from userstb INNER JOIN poststb ON userstb.userid = poststb.userid")
+    results = await db.all("SELECT * FROM userstb")
+    results2 = await db.all("SELECT * FROM updatestb")
+    results3 = await db.all("select userstb.firstname, userstb.lastname, poststb.tittle, poststb.postcontent, poststb.post_date, poststb.postmedia from userstb INNER JOIN poststb ON userstb.userid = poststb.userid")
         
         users_control = admin.returnuser();
         update_input_control = admin.returnupdate_input();
@@ -407,8 +394,8 @@ app.post('/post_update', async function (req, res) {
     console.log(req.body.tittle+
         req.body.content+
         req.body.image)
-    client.connect(
-        await client.query(
+    db.connect(
+        await db.run(
           "INSERT INTO updatestb (tittle, post_content, image) VALUES ($1, $2, $3)",
           [
             req.body.tittle,
@@ -433,7 +420,7 @@ app.post('/post_update', async function (req, res) {
 
 app.post('/delete_update/:update_id', async function (req,res) {
     insert_value = req.params.update_id
-    //results3 = await client.query("DELETE FROM userstb WHERE update_id = $1", [insert_value])
+    //results3 = await db.query("DELETE FROM userstb WHERE update_id = $1", [insert_value])
     res.redirect('/admin')
 })
 
@@ -500,11 +487,11 @@ app.post('/makepost', async function (req,res) {
   } else {
     console.log('your tittle is '+req.body.tittle + ' and your conntent is: '+req.body.postcontent)
    
-    results3 = await client.query("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
+    results3 = await db.all("SELECT userid FROM userstb WHERE email = $1", [req.session.username])
     results4 = results3.rows[0].userid
     console.log(results3.rows[0].userid)
    // console.log(results4.rows)
-   await client.query(
+   await db.query(
     "INSERT INTO poststb  (userid, tittle, postcontent) VALUES ($1, $2, $3)",
     [
       results4,
@@ -559,3 +546,6 @@ app.get('/videos2', (req, res) => {
 app.listen(PORT, function () {
   console.log("app running at port 3017");
 });
+	
+});
+
