@@ -13,11 +13,7 @@ const weather = require('weather-js')
 // const wCap = new cv.videoCapture(0)
 
 
-// setInterval(() => {
-//     io.emit('vid', 'some data')
-// }, 1000)
-// const MemoryStore = require('memorystore')(session)
-let useSSL = false;
+
 let local = process.env.LOCAL || false;
 if (process.env.DATABASE_URL && !local){
     useSSL = true;
@@ -35,7 +31,7 @@ const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:543
 
 const pool = new Pool({
     connectionString,
-    ssl : useSSL
+    ssl : false
   });
 
 const PORT = process.env.PORT || 3017;
