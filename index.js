@@ -148,7 +148,15 @@ open({
       }
     }
   });
-
+  
+  app.get("/access", function (req, res) {
+    if (!req.session.username) {
+      res.redirect("/login");
+    } else {
+      res.render("door-access");
+    }
+  });
+  
   app.get("/reports", function (req, res) {
     if (!req.session.username) {
       res.redirect("/login");
