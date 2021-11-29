@@ -35,9 +35,7 @@ const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:543
 
 const client = new Client({
     connectionString,
-    ssl: {
-      rejectUnauthorized: false,
-    },
+    ssl : useSSL
   });
 
 
