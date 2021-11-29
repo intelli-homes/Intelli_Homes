@@ -26,18 +26,21 @@ if (process.env.DATABASE_URL && !local){
 const pg = require("pg");
 const { start } = require("repl");
 const ad = require("./admin");
-const {Client} = pg.Pool
+const Pool = pg.Pool;
 
-const admin = ad();
-
-
+// should we use a SSL connection
+let useSSL = false;
+let local = process.env.LOCAL || false;
+if (process.env.DATABASE_URL && !local){
+    useSSL = true;
+}
+// which db connection to use
 const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/my_products';
 
-const client = new Client({
+const pool = new Pool({
     connectionString,
     ssl : useSSL
   });
-
 
 const PORT = process.env.PORT || 3017;
 
