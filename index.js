@@ -17,16 +17,17 @@ const weather = require('weather-js')
 //     io.emit('vid', 'some data')
 // }, 1000)
 // const MemoryStore = require('memorystore')(session)
-const { Client } = require("pg");
+const pg = require("pg");
 const { start } = require("repl");
 const ad = require("./admin");
+Client = pg.pool
 
 const admin = ad();
 
 
 const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/my_products';
 
-const pool = new client({
+const client = new Client({
     connectionString,
     ssl : useSSL
   });
