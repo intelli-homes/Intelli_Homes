@@ -22,12 +22,14 @@ const { start } = require("repl");
 const ad = require("./admin");
 
 const admin = ad();
-const client = new Client({
-  user: "tzrshwebdhrysp",
-  password: "eba676700c384bc03e60a7e05ae371e30a43d6f0ea53c02cc5eae8f383b90feb",
-  host: "ec2-52-54-237-144.compute-1.amazonaws.com",
-  database: "dfpvabsnh8th5e",
-});
+
+
+const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/my_products';
+
+const pool = new client({
+    connectionString,
+    ssl : useSSL
+  });
 
 
 const PORT = process.env.PORT || 3017;
@@ -111,11 +113,51 @@ app.get("/cameras", function (req, res) {
   }
 });
 
-app.get("/camera", function (req, res) {
+app.get("/camera/:num", function (req, res) {
   if (!req.session.username) {
     res.redirect("/login");
   } else {
-    res.render("camera");
+    dt = req.params.num
+    // console.log(dt)
+
+    if(dt == 0){
+      console.log(dt)
+      cam = 'camera 1'
+      srcs = 'http://localhost:3017/videos'
+      res.render("camera", {
+        srcs: srcs,
+        cam: cam
+      });
+
+    } else if (dt == 1) {
+      console.log(dt)
+      cam = 'camera 2'
+    srcs = 'http://localhost:3017/videos1'
+    res.render("camera", {
+      srcs: srcs,
+      cam: cam
+    });
+
+  }else if (dt == 2) {
+    console.log(dt)
+    cam = 'camera 3'
+    srcs = 'http://localhost:3017/videos2'
+    res.render("camera", {
+      srcs: srcs,
+      cam: cam
+    });
+
+  }else if (dt == 3) {
+    console.log(dt)
+    cam = 'camera 4'
+    srcs = 'http://localhost:3017/videos3'
+    res.render("camera", {
+      srcs: srcs,
+      cam: cam
+    });
+
+  }
+    
   }
 });
 
