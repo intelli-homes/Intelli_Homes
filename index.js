@@ -102,6 +102,14 @@ open({
       // res.status(200).json(results.rows)
     }
   });
+  
+  app.get("/", function (req, res) {
+    if (!req.session.username) {
+      res.redirect("/login");
+    } else {
+      res.render("home");
+    }
+  });
 
   app.get("/cameras", function (req, res) {
     if (!req.session.username) {
