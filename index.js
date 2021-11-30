@@ -1,3 +1,4 @@
+
 const express = require("express");
 const exphbs = require("express-handlebars");
 const session = require("express-session");
@@ -7,7 +8,9 @@ const fs = require("fs");
 const weather = require("weather-js");
 const ad = require("./admin");
 
+
 admin = ad();
+
 
 const sqlite3 = require("sqlite3");
 const { open } = require("sqlite");
@@ -48,7 +51,8 @@ open({
     if (!req.session.username) {
       res.redirect("/login");
     } else {
-      userid = req.session.userid;
+      usern = req.session.role;
+      console.log("results id is "+usern)
       results5 = await db.get(
         "SELECT * FROM userstb WHERE email = ?",
         req.session.username
@@ -90,6 +94,7 @@ open({
             results: results,
             results4: results4,
             results5: results5,
+            usern: usern
           });
         }
       );
@@ -369,7 +374,7 @@ open({
   });
 
   app.get("/test", function (req, res) {
-    admin.showupdate();
+    // camera.detectface()
     res.render("test")
   });
 
